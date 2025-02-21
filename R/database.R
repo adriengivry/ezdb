@@ -42,7 +42,7 @@ DatabaseConnection <- setRefClass(
     connected = "logical"
   ),
   methods = list(
-    initialize = function(db_server, db_name, db_user = NULL, db_password = NULL) {
+    initialize = function(db_server, db_name, db_user = NULL, db_password = NULL, keep_alive = FALSE) {
       'Initialize a DatabaseConnection object'
       library(RMySQL)
 
@@ -54,7 +54,9 @@ DatabaseConnection <- setRefClass(
 
       .self$authenticate_and_connect()
 
-      on.exit(.self$finalize())
+      if (!keep_alive) {
+        on.exit(.self$finalize())
+      }
     },
     authenticate_and_connect = function(db_user = NULL, db_password = NULL) {
       '

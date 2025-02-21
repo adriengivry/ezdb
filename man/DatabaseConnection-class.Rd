@@ -45,7 +45,13 @@ A reference class to represent a connection to a database.
       the object is garbage collected.
       }
 
-\item{\code{initialize(db_server, db_name, db_user = NULL, db_password = NULL)}}{Initialize a DatabaseConnection object}
+\item{\code{initialize(
+  db_server,
+  db_name,
+  db_user = NULL,
+  db_password = NULL,
+  keep_alive = FALSE
+)}}{Initialize a DatabaseConnection object}
 
 \item{\code{is_valid()}}{Returns TRUE if the connection is established and valid}
 }}
